@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <title>N.30</title>
+    <meta charset="utf-8">
+    <script src="script.js"></script>
+</head>
+<style>
+    #draggable1 {
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+
+    #draggable2 {
+    position: fixed;
+    left: 50;
+    top: 0;
+  }
+
+    #draggable3 {
+    position: fixed;
+    left: 100;
+    top: 0;
+  }
+
+    .draggable{
+        cursor: pointer;
+  }
+</style>
+
+<body>
+<div>
+    <img  src="https://js.cx/drag-heroes/ball.png" class="draggable" id="draggable1" >
+    <img  src="https://js.cx/drag-heroes/ball.png" class="draggable" id="draggable2">
+    <img  src="https://js.cx/drag-heroes/ball.png" class="draggable" id="draggable3">
+</div>
+    <script type="text/javascript">
+        "use strict";
+      
+      var elements = document.getElementsByTagName('img');
+      
+      for (var i=0; i<elements.length; i++) {
+        var elem = elements[i];
+        elem.style.position = 'absolute';
+        elem.style.left = elem.offsetLeft; //
+        elem.style.top = elem.offsetTop;//
+      }
+      
+      document.body.addEventListener('mousedown', funct, false);
+      
+      function funct(EO) {
+        EO = EO || window.event;
+        var dragElement = EO.target;
+      
+        var shiftX = EO.pageX - dragElement.getBoundingClientRect().left;//координаты элемента
+        var shiftY = EO.pageY - dragElement.getBoundingClientRect().top;
+      
+        document.body.appendChild(dragElement);
+ 
+ 
+
+        document.onmousemove = function (EO) {
+            var newX = EO.pageX - shiftX;
+            var newY = EO.pageY - shiftY;
+            //console.log(newX+"+"+newY);
+
+
+            dragElement.style.left = EO.pageX - shiftX + 'px';
+            dragElement.style.top = EO.pageY - shiftY + 'px';
+        };
+      
+        dragElement.onmouseup = function(){
+            document.onmousemove = null; //finishDrag
+        }
+      
+        dragElement.ondragstart = function () {
+          return false;
+        };
+
+
+
+
+
+      };     
+      </script>
+</body>
