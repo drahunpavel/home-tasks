@@ -45,7 +45,7 @@ drinkStorage.addValue(coctailName, coctailDescription);
 function getDescription() { //onclick="getDescription()" value="получение информации о напитке"
     var coctailName=prompt("Введите название коктейля, чтобы узнать его описание","");
     console.log("==========");
-    //var arr=drinkStorage.getValue(coctailName);
+    //var arr=drinkStorage.getValue(coctailName);ccc
     /*console.log("Название: "+coctailName+
                 "\nАлкогольный?: "+drinkStorage.getValue(coctailName).alcohol+
                 "\nПодавать охлажденным?: "+drinkStorage.getValue(coctailName).cooled+
@@ -65,7 +65,7 @@ function getСocktailNames(){ //onclick="getСocktailNames()" value="переч�
     console.log(drinkStorage.getKeys());
 };
 
-
+//Проверка!
 
 
 
