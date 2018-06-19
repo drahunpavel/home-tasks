@@ -1,0 +1,20 @@
+/*Стиль будет применяться при ширине экрана большей 1000 пикселей*/
+@media screen and (min-width: 1000px) {
+	Canvas{
+        background:  #BFF5EB;
+        width:1080px;
+        height:320px;
+    }
+}
+/*Стиль будет применяться при ширине экрана меньшей 1600 пикселей*/
+@media screen and (max-width: 1600) {
+	background: rgb(151, 216, 204);
+}
+/*Стиль будет применяться при ширине экрана большей 1000 пикселей и  меньшей 1600 пикселей*/
+@media screen and (min-width: 1000px) and (max-width: 1600px)  {
+	background: rgb(151, 216, 204);
+}
+
+@media screen and (max-width: 700px) {
+	Canvas{background: #BFF5EB;}
+}
