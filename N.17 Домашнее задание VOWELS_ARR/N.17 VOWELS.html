@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VOWELS</title>
+  <script>
+ /*
+ Переписать ДЗ VOWELS (подсчёт гласных букв в строке) без использования циклов, тремя способами:
+с использованием метода массива forEach,
+с использованием метода массива filter,
+с использованием метода массива reduce.
+ */ 
+  </script>
+</head>
+<body>
+<script>
+"use strict";
+
+var str=prompt("Введите текст","абрикос");
+
+////////////////////////////
+function countVowels1(text){
+var strArr=text.toLowerCase().split("");
+var count={а:"",о:"",э:"",и:"",у:"",ы:"",е:"",ё:"",ю:"",я:""};
+var counter=0;
+	strArr.forEach(function(v,i,a){
+    	if(strArr[i] in count){
+		counter++;
+		};
+	});
+return counter;
+};	
+	
+console.log("метод forEach: " + countVowels1(str) + " гласных");
+console.log("-----------------");
+console.time('countVowels1');
+countVowels1(str);
+console.timeEnd('countVowels1');
+//////////////////////////////
+function countVowels2(text){
+var strArr=text.toLowerCase().split(""); 
+
+	function f2(v,i,a){
+		var count={а:"",о:"",э:"",и:"",у:"",ы:"",е:"",ё:"",ю:"",я:""};
+		if(v in count)
+		return v;
+	};
+var vowelsArr=strArr.filter(f2).length;
+return vowelsArr;
+};
+console.log("метод filter: " + countVowels2(str) + " гласных");
+console.log("-----------------");
+console.time('countVowels2');
+countVowels1(str);
+console.timeEnd('countVowels2');
+///////////////////////////////////
+
+//Самым мудренным методом оказался. С какой стороны к нему нужно было подходить?
+function countVowels3(text) {
+	var strArr=text.toLowerCase().split('');
+  	var add = function(sum, letter, i) {
+		var count={а:"",о:"",э:"",и:"",у:"",ы:"",е:"",ё:"",ю:"",я:""};
+		if(letter in count) {
+			return sum+1;
+		}else{
+			return sum;
+		};
+   	};
+  	var total = strArr.reduce(add,0);
+  	return total;
+};
+console.log("метод reduce: " + countVowels3(str) + " гласных");
+console.log("-----------------");
+console.time('countVowels3');
+countVowels3(str);
+console.timeEnd('countVowels3');
+</script>
+</body>
+</html>
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VOWELS</title>
+  <script>
+  /*
+  Написать «чистую» функцию для эффективного подсчёта количества русских гласных букв в строке. 
+Спросить у пользователя строку. Вывести в консоль количество русских гласных букв в ней.
+  */
+  </script>
+</head>
+<body>
+<script>
+"use strict";
+
+
+var text = prompt("Введите текст","");
+
+
+
+function countVowels1(text){
+  var vowels1 = text.match(/[аоэиуыеёюя]/ig).length;
+  return vowels1;
+};
+console.time('countVowels1');
+countVowels1(text);
+console.timeEnd('countVowels1');
+console.log("Всего гласных: "+countVowels1(text));
+console.log("-----------------");
+
+
+function countVowels2(text){
+var vowels2 = text.length - text.replace(/[аоэиуыеёюя]/ig,'').length;
+return vowels2;
+};
+console.time('countVowels2');
+countVowels2(text);
+console.timeEnd('countVowels2');
+console.log("Всего гласных: "+countVowels2(text));
+console.log("-----------------");
+/*
+
+
+console.time('countVowels3');
+function countVowels3(text){
+  var text=text.toLowerCase().split('');
+  var count={а:0,о:0,э:0,и:0,у:0,ы:0,е:0,ё:0,ю:0,я:0};
+  //var count_size = Object.keys(count).length;
+  for ( var i=0; i<text.length; i++ ) {
+      var letter=text[i];
+      if (letter in count)
+      count[letter]++;
+      var vowels3 = count.а+count.о+count.э+count.и+count.у+count.ы+count.е+count.ё+count.ю+count.я;
+  };
+console.log("countVowels3(сумма знач хэша), кол-во гласных: "+vowels3);
+return vowels3;
+};   
+countVowels3(text);
+console.timeEnd('countVowels3');
+*/
+
+
+function countVowels3(text){
+  var text=text.toLowerCase().split('');
+  var count={а:"",о:"",э:"",и:"",у:"",ы:"",е:"",ё:"",ю:"",я:""};
+  //var count_size = Object.keys(count).length;
+  var counter = 0;
+  for ( var i=0; i<text.length; i++ ) {
+      
+      if (text[i] in count)
+      counter++;
+  };
+  return counter;
+}; 
+console.time('countVowels3');
+countVowels3(text);
+console.timeEnd('countVowels3');
+console.log("Всего гласных: "+countVowels3(text));
+console.log("-----------------");
+
+</script>
+</body>
+</html>
+

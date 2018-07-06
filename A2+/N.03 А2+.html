@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>А2+</title>
+<style type="text/css"> 
+</style> 
+<script>
+	/*
+	Написать чистую функцию, эффективно удаляющую из переданной ей строки
+все начальные и конечные пробелы, не используя метод строки trim.
+Если умеете работать с регулярными выражениям - не используйте и их :)
+	*/
+</script>
+</head>
+<body>
+
+<script type="text/javascript"> 
+"use strict";
+
+var text = prompt("","");	
+/*	
+	function cliptextObj(textObj){
+	textObj = textObj.split('');
+	for(var i=0; i<textObj.length; i++){
+		if(textObj[i]==" "){
+			delete textObj[i];
+		};
+	};
+	var textObj=textObj.join('');
+	return textObj;
+	};
+	
+	alert(cliptextObj(text));
+*/
+
+
+
+
+function cliptextObj(textObj){
+	var count = 0;
+var pos = textObj.indexOf(' ');
+
+while (pos !== -1) {
+  count++;
+  pos = textObj.indexOf(' ', pos + 1);
+}
+
+	var leftIndex = textObj.lastIndexOf(' ', count);
+	console.log("leftIndex "+leftIndex);
+	
+	var rightIndex = textObj.indexOf(' ', count);
+	console.log("rightIndex " +rightIndex);
+	
+	var sliceStr = textObj.slice(leftIndex+1, rightIndex);
+	console.log(sliceStr);
+	return sliceStr;
+};
+
+alert(cliptextObj(text));
+
+
+</script>
+</body>
+</html>
